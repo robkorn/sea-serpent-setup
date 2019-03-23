@@ -5,4 +5,8 @@ wget https://raw.githubusercontent.com/input-output-hk/rust-cardano/e1d08491988f
 cd ../../.. && cargo build &&
 cd target/debug/ &&
 cp jormungandr ../../../node/ &&
-cp jormungandr_cli ../../../node/
+cp jormungandr_cli ../../../node/ &&
+cd ../../../node/ &&
+./jormungandr generate-priv-key --type=Ed25519Extended > private.key &&
+(cat private.key | ./jormungandr generate-pub-key) > public.key
+

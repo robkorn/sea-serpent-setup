@@ -1,1 +1,1 @@
-Run `nodeSetup.sh` and the executables will be copied to the node folder after compilation.
+Run `nodeSetup.sh` to build & the executables plus generate new keys in the node folder.
