@@ -3,7 +3,7 @@ slot_duration: 15
 epoch_stability_depth: 10
 allow_account_creation: true
 address_discrimination: Production
-linear_fee:
+linear_fees:
   constant: 2
   coefficient: 1
   certificate: 4
