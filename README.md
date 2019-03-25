@@ -1,1 +1,1 @@
-Run `nodeSetup.sh` to build & the executables plus generate new keys in the node folder.
+Run `nodeSetup.sh` to clone the repo, build + copy the executables, and generate new keys in the node folder.
