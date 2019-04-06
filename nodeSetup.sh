@@ -8,4 +8,4 @@ cp jcli ../../../node/ &&
 cd ../../../node/ &&
 ./jcli key generate --type=Ed25519Extended > private.key &&
 (cat private.key | ./jcli key to-public) > public.key
-./jcli genesis init | ./jcli genesis encode --output block_0.bin
+cat genesis.yaml | ./jcli genesis encode --output block_0.bin
