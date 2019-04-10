@@ -1,4 +1,4 @@
-import subprocess, time
+import subprocess, time, random
 
 def getNodeStats(ip):
     subprocess.call(["./jcli", "rest", "v0", "node", "stats", "get", "-h", ip])
@@ -27,6 +27,8 @@ def performChoice(choice):
         getUTXO(ip)
     elif choice == "3":
         getTip(ip)
+    elif choice == "4":
+        performChoice(str(random.randint(1,4)))
 
 
 
@@ -34,7 +36,7 @@ def performChoice(choice):
 print "Welcome to the node stress tester."
 ip = getIP()
 
-choice = raw_input("Choose:\n(1) Node Stats\n(2) Whole UTXO\n(3) Block Tip\n")
+choice = raw_input("Choose:\n(1) Node Stats\n(2) Whole UTXO\n(3) Block Tip\n(4) Random\n")
 delay = input("Enter the delay you wish to use in seconds(can be fractional): ")
 
 while 1:
