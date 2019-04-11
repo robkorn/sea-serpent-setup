@@ -1,22 +1,54 @@
+# The Blockchain Configuration defines the different settings
+# of the blockchain that cannot be changed once the blockchain
+# is started.
 blockchain_configuration:
-  block0_date: 1550822014
+
+  # The block0-date defines the date the blockchain starts
+  # expected value in seconds since UNIX_EPOCH
+  block0_date: 1555019061
+
+  # This is the type of dicrimination of the blockchain
+  # of this blockchain is meant for production then
+  # use 'production' instead.
+  #
+  # otherwise leave as this
   discrimination: test
+
+  # The initial consensus version:
+  #
+  # * BFT consensus: bft
+  # * Genesis Praos consensus: genesis
   block0_consensus: bft
+
+
+
 initial_setting:
-  allow_account_creation: true
+
+  max_number_of_transactions_per_block: 255
+
+  bootstrap_key_slots_percentage: ~
+
   slot_duration: 15
-  epoch_stability_depth: 2600
-  consensus: bft
-  linear_fees:
-    constant: 0
-    coefficient: 0
-    certificate: 0
-  block_version: 1
+
+  epoch_stability_depth: 10
+
   bft_leaders:
-    - ed25519extended_public1k3wjgdcdcn23k6dwr0cyh88ad7a4ayenyxaherfazwy363pyy8wqppn7j3
-    - ed25519extended_public13talprd9grgaqzs42mkm0x2xek5wf9mdf0eefdy8a6dk5grka2gstrp3en
-initial_utxos:
+    - ed25519e_pk1else5uqslegj6n5rxnrayz2x99cel6m2g492ac6tpv76kns0dwlqpjnh0l
+    - ed25519e_pk1xuqdxht6f0kkh0lf3ck3gfyvnpk33s09du92w6740mfmxl6hsfpsp8grmk
+
+  llow_account_creation: true
+
+  linear_fee:
+    constant: 2
+    coefficient: 1
+    certificate: 4
+
+initial_funds:
   - address: ta1svy0mwwm7mdwcuj308aapjw6ra4c3e6cygd0f333nvtjzxg8ahdvxlswdf0
     value: 10000
-  - address: ca1qvhc8gqxwcu4ehjqrdz9svg0uw7w332de5luh5ngp2rm0777j5ya53y3ttl
-    value: 10000
+
+initial_certs:
+  - cert1qsqqqqqqqqqqqqqqqqqqqqqqqr2sr5860cvq6vuc05tlwl9lwrs5vw7wq8fjm9fw6mucy0cdd84n0c6ljv2p03s8tc8nukzcrx87zkp3hflm2ymglghs4sn60xgryu57pznzff92ldaymh34u36z6fvdqnzl8my8ucttn09sehq8pdgrle35k3spqpq2s44c5mudrr2c3d0pelf75tjk4ezmsqfxhvjlawxvmcnluc0tcl7kfh4hveatrfuu5fzg74hxpucf0sh6v4l7hhkpneaa02lmp6j8q5jqgzt4
+
+legacy_funds: ~
+
