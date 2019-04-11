@@ -1,4 +1,4 @@
-import subprocess, time, random
+import subprocess, time, random, argparse
 
 def getNodeStats(ip):
     subprocess.call(["./jcli", "rest", "v0", "node", "stats", "get", "-h", ip])
@@ -13,7 +13,7 @@ def getIP():
     f = open("nodeIP.txt", "r")
     if f:
         print "Using IP from nodeIP.txt"
-        ip = f.readline().strip() 
+        ip = f.readline().strip()
         ip = "http://" + ip + "/api"
         print ip
     else:
@@ -32,13 +32,26 @@ def performChoice(choice):
 
 
 
-# if __name__ == "__main__":
-print "Welcome to the node stress tester."
-ip = getIP()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode", help="Either 'a' for automatic or 'm' for manual.")
+    args = parser.parse_args()
+    print args.mode
 
-choice = raw_input("Choose:\n(1) Node Stats\n(2) Whole UTXO\n(3) Block Tip\n(4) Random\n")
-delay = input("Enter the delay you wish to use in seconds(can be fractional): ")
+    if args.mode == 'a':
+        delay = 0.000001
+        choice = "4"
 
-while 1:
-    performChoice(choice)
-    time.sleep(delay)
+    elif args.mode == 'm':
+        print "Welcome to the node stress tester."
+        choice = raw_input("Choose:\n(1) Node Stats\n(2) Whole UTXO\n(3) Block Tip\n(4) Random\n")
+        delay = input("Enter the delay you wish to use in seconds(can be fractional): ")
+
+    else:
+        print "Please enter a correct mode (a/m)"
+        quit()
+
+    ip = getIP()
+    while 1:
+        performChoice(choice)
+        time.sleep(delay)
