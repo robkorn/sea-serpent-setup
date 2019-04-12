@@ -6,5 +6,5 @@ cp jormungandr ../../../jormungandr-node/ &&
 cp jcli ../../../jormungandr-node/ &&
 cd ../../../jormungandr-node/ &&
 ./jcli key generate --type=Ed25519Extended > private.key &&
-(cat private.key | ./jcli key to-public) > public.key
+(cat private.key | ./jcli key to-public) > public.key &&
 cat genesis.yaml | ./jcli genesis encode --output block_0.bin
